@@ -19,7 +19,7 @@ public class Book extends Item implements IBorrowable {
             this.borrower = borrower;
         }
         else {
-            System.out.println(getTitle()+ " is already borrowed.");
+            System.out.println(getTitle() + " is already borrowed.");
         }
     }
 
@@ -33,7 +33,7 @@ public class Book extends Item implements IBorrowable {
         if (isBorrowed()) {
             this.borrower = null;
         } else {
-            System.out.println(getTitle()+ " is not borrowed.");
+            System.out.println(getTitle() + " is not borrowed.");
         }
     }
 }
