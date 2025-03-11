@@ -2,7 +2,7 @@
  * Demonstrates usage of the Library, LibraryItemFactory, and related classes.
  */
 public class LibraryTest {
-
+    // Run this script first
     public static void main(String[] args) {
         // Instantiate the factory for creating library items
         LibraryItemFactory factory = new LibraryItemFactory();
