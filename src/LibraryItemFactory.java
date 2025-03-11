@@ -1,34 +1,18 @@
-public abstract class LibraryItemFactory {
+public class LibraryItemFactory {
     public Item createItem(String type, String title, int publicationYear, String... extraData) {
-        if (type.equals("book")) {
-            return createBook(title, publicationYear, extraData);
-        }
-        else if (type.equals("magazine")) {
-            return createMagazine(title, publicationYear, extraData);
-        }
-        else {
-            System.out.println("Unsupported type: " + type);
-            return null;
-        }
-    }
-
-    private Item createBook(String title, int publicationYear, String... extraData) {
-        try {
-            String author = extraData[0];
-            String ISBN = extraData[1];
-            return new Book(title, publicationYear, author, ISBN);
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
-        }
-        return null;
-    }
-
-    private Item createMagazine(String title, int publicationYear, String... extraData) {
-        try {
-            int issueNumber = Integer.parseInt(extraData[0]);
-            return new Magazine(title, publicationYear, issueNumber);
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
+        switch (type) {
+            case "book":
+                if (extraData.length != 2) {
+                    throw new IllegalArgumentException("Extra data length must be 2");
+                }
+                return new Book(title, publicationYear, extraData[0], extraData[1]);
+            case "magazine":
+                if (extraData.length != 1) {
+                    throw new IllegalArgumentException("Extra data length must be 1");
+                }
+                return new Magazine(title, publicationYear, Integer.parseInt(extraData[0]));
+            default:
+                System.out.println("Unknown library item type: " + type);
         }
         return null;
     }
