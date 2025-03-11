@@ -1,4 +1,20 @@
+/**
+ * Factory class responsible for creating various library items.
+ */
 public class LibraryItemFactory {
+
+    /**
+     * Creates and returns a library item of the specified type.
+     *
+     * @param type The type of item to create ("book" or "magazine").
+     * @param title The title of the item.
+     * @param publicationYear The year the item was published.
+     * @param extraData Additional data required based on item type:
+     *                  - For "book": [author, ISBN]
+     *                  - For "magazine": [issueNumber]
+     * @return The created Item instance, or null if type is unrecognized.
+     * @throws IllegalArgumentException If the provided extraData does not match the expected length.
+     */
     public Item createItem(String type, String title, int publicationYear, String... extraData) {
         switch (type) {
             case "book":
